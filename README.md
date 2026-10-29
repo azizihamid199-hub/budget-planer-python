@@ -1,25 +1,44 @@
 # Personal Budget Planner (Python & SQL)
 
-A lightweight Command Line Interface (CLI) application built with Python and SQLite to track personal income and expenses. This project demonstrates my understanding of backend logic, object-oriented programming (OOP) principles, exception handling, and database management (CRUD operations).
+[Zur deutschen Version](README_DE.md)
 
-## 🚀 Features
-* **Income & Expense Tracking:** Add transactions with specific categories and timestamps.
-* **Persistent Storage:** All data is safely stored in a local SQLite database (`budget.db`).
-* **Real-time Balance Calculation:** Automatically calculates the total balance and warns the user if they are in the negative.
-* **Data Retrieval:** Displays a formatted list of all historical transactions.
-* **Error Handling:** Robust input validation to prevent crashes from wrong user inputs.
+A command line application in Python with SQLite for tracking income and expenses.
 
-## 🛠️ Tech Stack & Skills Demonstrated
-* **Language:** Python 3
-* **Database:** SQLite3 (SQL)
-* **Tools:** PyCharm, Git/GitHub
-* **Concepts:** 
-  * Relational Database Design (Tables, Primary Keys, SQL Queries)
-  * Error and Exception Handling (`try-except` blocks)
-  * Modular Code Separation (Separating database logic from user interface)
+## Features
+- Add income and expenses with a category and timestamp
+- Persistent storage in a local SQLite database (`budget.db`)
+- Balance calculation with a warning when the balance is negative
+- List all transactions as a table
+- Edit and delete transactions (CRUD)
+- Input validation: invalid amounts, empty categories and unknown IDs do not crash the program
 
-## 📦 How to Run the Project
+## Tech
+- Python 3 (standard library only)
+- SQLite3 with SQL (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`, `SUM`)
+- Amounts are stored as whole cents to avoid rounding errors
+- Database logic (`database.py`) is separated from the user interface (`main.py`)
+- Tests with `unittest`
 
-1. Clone this repository to your local machine:
-```bash 
-[https://github.com/azizihamid199-hub/budget-planer-python.git](https://github.com/azizihamid199-hub/budget-planer-python.git)
+## Project structure
+| File | Purpose |
+|---|---|
+| `database.py` | `BudgetDatabase` class with all SQL access |
+| `main.py` | Console menu, input validation and output |
+| `tests/test_budget.py` | Tests for the database and input validation |
+
+## Run
+```bash
+git clone https://github.com/azizihamid199-hub/budget-planer-python.git
+cd budget-planer-python
+python main.py
+```
+
+## Run the tests
+```bash
+python -m unittest discover -s tests
+```
+
+## Ideas for improvement
+- Report per category or month
+- CSV export
+- Graphical or web interface

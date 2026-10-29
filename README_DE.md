@@ -1,26 +1,44 @@
 # Persönlicher Budget-Planer (Python & SQL)
 
-[🇬🇧 Switch to English Version](README.md)
+[Switch to English version](README.md)
 
-Eine schlanke Kommandozeilen-Anwendung (CLI), entwickelt mit Python und SQLite, um persönliche Einnahmen und Ausgaben zu verfolgen. Dieses Projekt demonstriert mein Verständnis von Backend-Logik, objektorientierter Programmierung (OOP), Fehlerbehandlung und Datenbankverwaltung (CRUD-Operationen).
+Konsolenanwendung in Python mit SQLite zum Erfassen von Einnahmen und Ausgaben.
 
-## 🚀 Funktionen
-* **Einnahmen- & Ausgaben-Tracking:** Transaktionen mit spezifischen Kategorien und Zeitstempeln hinzufügen.
-* **Dauerhafte Speicherung:** Alle Daten werden sicher in einer lokalen SQLite-Datenbank (`budget.db`) gespeichert.
-* **Echtzeit-Bilanzberechnung:** Berechnet automatisch den Gesamtsaldo und warnt den Nutzer, wenn er im Minus ist.
-* **Datenabruf:** Zeigt eine formatierte Liste aller bisherigen Transaktionen an.
-* **Fehlerbehandlung:** Robuste Eingabevalidierung, um Abstürze durch falsche Nutzereingaben zu verhindern.
+## Funktionen
+- Einnahmen und Ausgaben mit Kategorie und Zeitstempel erfassen
+- Dauerhafte Speicherung in einer lokalen SQLite-Datenbank (`budget.db`)
+- Kontostand berechnen, mit Warnung bei einem Minus
+- Alle Transaktionen als Tabelle anzeigen
+- Transaktionen ändern und löschen (CRUD)
+- Eingabeprüfung: ungültige Beträge, leere Kategorien und unbekannte IDs führen nicht zum Absturz
 
-## 🛠️ Tech-Stack & gezeigte Fähigkeiten
-* **Sprache:** Python 3
-* **Datenbank:** SQLite3 (SQL)
-* **Tools:** PyCharm, Git/GitHub
-* **Konzepte:** * Relationales Datenbankdesign (Tabellen, Primärschlüssel, SQL-Abfragen)
-  * Fehler- und Ausnahmebehandlung (`try-except`-Blöcke)
-  * Modulare Code-Trennung (Trennung von Datenbanklogik und Benutzeroberfläche)
+## Technik
+- Python 3 (nur Standardbibliothek)
+- SQLite3 mit SQL (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`, `SUM`)
+- Beträge werden als ganze Cent gespeichert, damit es keine Rundungsfehler gibt
+- Datenbanklogik (`database.py`) und Benutzeroberfläche (`main.py`) sind getrennt
+- Tests mit `unittest`
 
-## 📦 So wird das Projekt gestartet
+## Projektstruktur
+| Datei | Aufgabe |
+|---|---|
+| `database.py` | Klasse `BudgetDatabase` mit allen SQL-Zugriffen |
+| `main.py` | Konsolenmenü, Eingabeprüfung und Ausgabe |
+| `tests/test_budget.py` | Tests für Datenbank und Eingabeprüfung |
 
-1. Klone dieses Repository auf deinen PC:
-   ```bash
-[https://github.com/azizihamid199-hub/budget-planer-python.git](https://github.com/azizihamid199-hub/budget-planer-python.git)
+## Starten
+```bash
+git clone https://github.com/azizihamid199-hub/budget-planer-python.git
+cd budget-planer-python
+python main.py
+```
+
+## Tests ausführen
+```bash
+python -m unittest discover -s tests
+```
+
+## Ideen zum Ausbauen
+- Auswertung pro Kategorie oder Monat
+- Export als CSV
+- Grafische Oberfläche oder Web-Version
